@@ -1,0 +1,47 @@
+ Ques-        
+          * 
+        * * 
+      * * * 
+    * * * * 
+  * * * * * 
+
+Solution-
+
+for i in range(6):
+    for j in range(6,0,-1):
+        if j>i:
+            print(" ",end=" ")
+        else:
+            print("*",end=" ")
+     
+    print()
+    
+    OR 
+    
+n=5
+k = 2 * n - 2
+for i in range(0, n):
+    for j in range(0, k):
+        print(end=" ")
+    k = k - 2
+    for j in range(0, i + 1):
+        print("* ", end="")
+    print("")
+    
+    
+Ques-
+
+A 
+B C 
+D E F 
+G H I J 
+K L M N O 
+
+Solution - 
+
+n=65
+for i  in range(6):
+    for j in range(i):
+        print(chr(n),end=" ")
+        n=n+1
+    print()
