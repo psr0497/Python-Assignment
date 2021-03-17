@@ -1,0 +1,88 @@
+Ques - - Problem Statement :
+
+        Make a Grocery List for supermarket shopping with name,
+        price and quantity; if the list already contains an item
+        then only update the price and quantity it should not
+        append the item name again. Ask the user his/her budget
+        initially and minus the budget after adding a new item in
+        the list. If budgets go zero/0 then no more items could
+        be bought and if some money left and users add items
+        greater than budget left then inform “over price” or any
+        other message. After the list is made any money left in
+        the budget it should show an item within the budget from
+        the list made.VALIDATION is a must.
+
+
+
+Solution- 
+
+while True:
+    try:
+        budget=float(input("Enter Your Budget:\n"))
+    except ValueError:
+        print("\nAmount Entered in Incorrect Format\n")
+        continue
+    else:
+        break
+
+grocery_list={'product_name':[],'quantity':[],'price':[]}
+glist=list(grocery_list.values())
+name=glist[0]
+qty=glist[1]
+amt=glist[2]
+
+sum1=budget 
+
+while True:
+    try:
+        print("1.Add an item\n2.Exit")
+        n=int(input())
+    except ValueError:
+        print("\nEnter Correct Choice\n")
+    else:
+        
+        if n==1 and sum1>0:
+            name1=input("\nEnter product:")
+            qty1=input("\nEnter quantity:")
+            amt1=float(input("\nEnter Price:"))
+
+            if amt1>sum1:
+                print("\nCan't Buy the product ###(because budget left is "+str(sum1)+')')
+                continue
+            else:
+                
+                if name1 in name:
+                    ind=name.index(name1)
+                    qty.remove(qty[ind])
+                    amt.remove(amt[ind])
+                    qty.insert(ind,qty1)
+                    amt.insert(ind,amt1)
+
+                    sum1=budget-sum(amt)
+                    print("\nAmount left: ",sum1)
+
+                else:
+                    name.append(name1)
+                    qty.append(qty1)
+                    amt.append(amt1)
+
+                    sum1=budget-sum(amt)
+                    print("\nAmount left: ",sum1)
+
+    elif sum1<=0:
+        print("\nNo Budget")
+    else:
+        break
+
+
+
+if sum1 in amt:
+    ind1=amt.index(sum1)
+    Print("Amount left can buy you",name[ind1])
+    
+print("\nGROCERY LIST is:\n")
+
+print("{:<15} {:<15} {:<10}".format('Product Name','Quantity','Price'))
+      
+for i in range(len(name)):
+    print("{:<15} {:<1} Kg  {:>15} ".format(name[i],qty[i],amt[i]))
